@@ -1,0 +1,64 @@
+<%=provide(:title, "Form")%>
+
+<style>
+  body {
+    background-image: url('assets/bg.svg');
+    background-size: cover;
+  }
+  
+</style>
+<h1>Create a New Article</h1>
+
+<p>
+	Welcome Enactus Valley View's project submission page
+	Please submit your idea via the the form below
+</p>
+
+<h3>Best Of luck!</h3>
+
+<%= form_for(@user) do |f| %>
+	<p>
+		<%=f.label :firstname %>
+		<%=f.text_field :firstname %>
+	</p>
+	
+
+	<p>
+		<%=f.label :lastname %>
+		<%=f.text_field :lastname %>
+	</p>
+	
+
+	<p>
+		<%=f.label :email %>
+		<%=f.text_field :email %>
+	</p>
+	
+	<p>
+		<%=f.label :ID%>
+		<%=f.text_field :IDnum %>
+	</p>
+	
+	<p>
+		<%=f.label :phone%>
+		<%=f.text_field :phone %>
+	</p>
+
+    Project Idea
+    <%= f.fields_for :project do |projects_form| %>
+    	<p>
+    		<%= projects_form.text_area :body %>
+    	</p>
+    	
+    <% end %>
+
+	<p>
+		<%= f.submit :submit%>
+	</p> 
+<% end %>
+
+
+<div class="form-group">
+              <%= f.label :gender %>
+              <%= f.select :title, options_for_select(gender_select), { prompt: "Select Gender" }, class: "form-control" %>
+            </div>

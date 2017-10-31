@@ -6,16 +6,19 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		@user.save
-		
-		render 'static_pages/thanks'
+
+		if @user.save
+		      redirect_to '/static_pages/thanks'
+   		 else
+     		render 'new'
+        end
 	end
 
 
 	private
 	def user_params
 			params.require(:user).permit(:firstname, :lastname, :email,
-		:IDnum, :phone)
+		:IDnum, :phone, :gender, :project)
 	end
 
 end

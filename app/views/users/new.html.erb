@@ -1,43 +1,82 @@
-<%=provide(:title, "Form")%>
+<style>
+  body {
+    background-image: url('assets/bg.svg');
+    background-size: cover;
+  }
+</style>
 
-<h1>Create a New Article</h1>
 
-<p>
-	Welcome Enactus Valley View's project submission page
-	Please submit your idea via the the form below
-</p>
+<div class="container">
+  <h2 class="text-center m-t-50 text-white">MOBEX '17 </h2>
+  <div class="row m-t-40">
+    <div class="col d-flex justify-content-center">
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
 
-<h3>Best Of luck!</h3>
+          <%= form_for(@user) do |f| %>
+          
+            <div class="text-center">
+              <h5 class="text-uppercase" style="margin-bottom: 2px;">Form</h4> <hr>
+            </div> 
 
-<%= form_for(@user) do |f| %>
-	<p>
-		<%=f.label :firstname %>
-		<%=f.text_field :firstname %>
-	</p>
-	
+                           <% if @user.errors.any? %>
+                <div id="error explanation">
+                <div class="alert alert-error">
+                The form contains <%= pluralize(@user.errors.count, "error") %>.
+                </div>
+                <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                <li> <%= msg %></li>
+                <% end %>
+                </ul>
+                </div>
+                <% end %>
+           
+            
 
-	<p>
-		<%=f.label :lastname %>
-		<%=f.text_field :lastname %>
-	</p>
-	
+              <div class="form-group">
+                <%=f.label :firstname %>
+                <%= f.text_field :firstname, class: 'form-control', placeholder: 'Miracle' %>
+              </div>
 
-	<p>
-		<%=f.label :email %>
-		<%=f.text_field :email %>
-	</p>
-	
-	<p>
-		<%=f.label :ID%>
-		<%=f.text_field :IDnum %>
-	</p>
-	
-	<p>
-		<%=f.label :phone%>
-		<%=f.text_field :phone %>
-	</p>
+               <div class="form-group">
+                <%=f.label :lastname%>
+                <%= f.text_field :lastname, class: 'form-control', placeholder: 'Ceesay' %>
+              </div>
 
-	<p>
-		<%= f.submit :submit%>
-	</p> 
-<% end %>
+            <div class="form-group">
+              <%= f.label :gender %>
+              <%= f.select :gender, options_for_select(["male","female"]), { prompt: "Select Gender" }, class: "form-control" %>
+            </div>
+                
+            <div class="form-group">
+              <%= f.label :IDnum %>
+              <%= f.text_field :IDnum, class: 'form-control', placeholder: '218CS01003883' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control', placeholder: 'anyanwumiracle78@gmail.com' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone, class: 'form-control', placeholder: '0509289409' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :project %>
+              <%= f.text_area :project, class: 'form-control' %>
+            </div>
+
+
+            <%= f.submit "Submit", class: 'btn btn-success btn-block' %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>           
+                
