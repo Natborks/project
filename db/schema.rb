@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031143055) do
+ActiveRecord::Schema.define(version: 20171031153906) do
 
   create_table "add_project_to_users", force: :cascade do |t|
     t.text "project"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171031143055) do
     t.datetime "updated_at", null: false
     t.text "project"
     t.string "gender"
+    t.integer "terms"
   end
 
 end

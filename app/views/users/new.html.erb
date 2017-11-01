@@ -68,6 +68,15 @@
               <%= f.label :project %>
               <%= f.text_area :project, class: 'form-control' %>
             </div>
+            
+            <div class="form-group">
+            <p> 
+            <%=f.check_box :terms%>
+              I Accept
+              <%= link_to 'Terms and conditions', static_pages_terms_path%>
+            </p>
+              
+            </div>
 
 
             <%= f.submit "Submit", class: 'btn btn-success btn-block' %>
