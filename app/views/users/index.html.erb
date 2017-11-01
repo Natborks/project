@@ -1,0 +1,19 @@
+<h1>User Projects</h1>
+<br>
+<table>
+	<% @user.each do |user| %>
+		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+			<td class="list_description">
+				<dl>
+					<dt><%= user.IDnum %>  <%= user.firstname %> <%= user.lastname %></dt>
+					<dd><%= truncate(strip_tags(user.project),
+length: 80) %></dd>
+				</dl>
+			</td>
+			<td class="list_actions">
+				<%= link_to 'Show', user %><br/>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
